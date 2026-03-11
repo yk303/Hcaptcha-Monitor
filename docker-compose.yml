@@ -1,0 +1,17 @@
+services:
+  hcaptcha-monitor:
+    image: hcaptcha-monitor:latest
+    container_name: hcaptcha-monitor
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - /home/{$user}/hcaptcha-monitor:/data
+    environment:
+      PORT: "3000"
+      POLL_INTERVAL_MS: "600000"
+      CORS_ORIGIN: "*"
+      STATE_FILE: "/data/state.json"
+      DISCORD_WEBHOOK_URL: "${DISCORD_WEBHOOK_URL}"
+      HCAP_TARGETS: >-
+        [{"label":"default","host":"accounts.hcaptcha.com","sitekey":"a5f74b19-9e45-40e0-b45d-47ff91b7a6c2"}]
