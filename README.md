@@ -1,5 +1,7 @@
 # hcaptcha-monitor
 
+![discord](./image.png)
+
 Small Docker service that monitors hCaptcha `v` and `hsw` path changes for one or more sitekeys.
 
 The service stores the last seen value for each `host:sitekey` in a JSON file, polls on an interval, and sends a Discord webhook alert when the value changes.
